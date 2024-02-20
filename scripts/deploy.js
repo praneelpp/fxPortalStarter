@@ -8,9 +8,11 @@ const hre = require("hardhat");
 
 async function main() {
 
-  const token = await hre.ethers.deployContract("MetaToken");
+  const Cat_contract = await hre.ethers.getContractFactory("Cat");
+  const cat=await Cat_contract.deploy();
+  await cat.deployed();
 
-  console.log("Token address:", await token.getAddress());
+  console.log("Cat address :", cat.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
